@@ -1,0 +1,851 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card-border: hsl(var(--card-border));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover-border: hsl(var(--popover-border));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-border: var(--primary-border);
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary-border: var(--secondary-border);
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-muted-border: var(--muted-border);
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent-border: var(--accent-border);
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-destructive-border: var(--destructive-border);
+
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+
+  --color-sidebar: hsl(var(--sidebar));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-primary-border: var(--sidebar-primary-border);
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-accent-border: var(--sidebar-accent-border);
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+
+  --font-sans: var(--app-font-sans);
+  --font-serif: var(--app-font-serif);
+  --font-mono: var(--app-font-mono);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* LIGHT MODE */
+:root {
+  --button-outline: rgba(0, 0, 0, 0.1);
+  --badge-outline: rgba(0, 0, 0, 0.05);
+
+  /* Automatic computation of border around primary / danger buttons */
+  --opaque-button-border-intensity: -8; /* In terms of percentages */
+
+  /* Backgrounds applied on top of other backgrounds when hovered/active */
+  --elevate-1: rgba(0, 0, 0, 0.03);
+  --elevate-2: rgba(0, 0, 0, 0.08);
+
+  --background: 42 36% 94%;
+
+  --foreground: 205 24% 18%;
+
+  --border: 42 20% 83%;
+
+  --card: 42 45% 97%;
+
+  --card-foreground: 205 24% 18%;
+
+  --card-border: 42 20% 83%;
+
+  --sidebar: 205 24% 18%;
+
+  --sidebar-foreground: 42 36% 94%;
+
+  --sidebar-border: 205 19% 27%;
+
+  --sidebar-primary: 160 28% 67%;
+
+  --sidebar-primary-foreground: 205 24% 18%;
+
+  --sidebar-accent: 205 19% 27%;
+
+  --sidebar-accent-foreground: 42 36% 94%;
+
+  --sidebar-ring: 160 28% 67%;
+
+  --popover: 42 45% 97%;
+
+  --popover-foreground: 205 24% 18%;
+
+  --popover-border: 42 20% 83%;
+
+  --primary: 162 24% 39%;
+
+  --primary-foreground: 42 45% 97%;
+
+  --secondary: 160 26% 86%;
+
+  --secondary-foreground: 205 24% 18%;
+
+  --muted: 42 23% 89%;
+
+  --muted-foreground: 205 10% 44%;
+
+  --accent: 37 48% 67%;
+
+  --accent-foreground: 205 24% 18%;
+
+  --destructive: 4 58% 47%;
+
+  --destructive-foreground: 42 45% 97%;
+
+  --input: 42 20% 83%;
+  --ring: 162 24% 39%;
+  --chart-1: 162 24% 39%;
+  --chart-2: 37 48% 67%;
+  --chart-3: 205 24% 18%;
+  --chart-4: 160 28% 67%;
+  --chart-5: 4 58% 47%;
+
+  --app-font-sans: 'DM Sans', sans-serif;
+  --app-font-serif: Georgia, serif;
+  --app-font-mono: 'Space Mono', monospace;
+  --radius: 0.35rem;
+  --shadow-2xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0); /*replace with H S L */
+  --shadow-xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0); /*replace with H S L */
+  --shadow-sm:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-md:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 2px 4px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-lg:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 4px 6px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-xl:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 8px 10px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-2xl: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0);
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+
+  /* Automatically computed borders - intensity can be controlled by the user by the --opaque-button-border-intensity setting */
+
+  /* Fallback for older browsers */
+  --sidebar-primary-border: hsl(var(--sidebar-primary));
+  --sidebar-primary-border: hsl(
+    from hsl(var(--sidebar-primary)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --sidebar-accent-border: hsl(var(--sidebar-accent));
+  --sidebar-accent-border: hsl(
+    from hsl(var(--sidebar-accent)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --primary-border: hsl(var(--primary));
+  --primary-border: hsl(
+    from hsl(var(--primary)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --secondary-border: hsl(var(--secondary));
+  --secondary-border: hsl(
+    from hsl(var(--secondary)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --muted-border: hsl(var(--muted));
+  --muted-border: hsl(
+    from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) /
+      alpha
+  );
+
+  /* Fallback for older browsers */
+  --accent-border: hsl(var(--accent));
+  --accent-border: hsl(
+    from hsl(var(--accent)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --destructive-border: hsl(var(--destructive));
+  --destructive-border: hsl(
+    from hsl(var(--destructive)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+}
+
+.dark {
+  --button-outline: rgba(255, 255, 255, 0.1);
+  --badge-outline: rgba(255, 255, 255, 0.05);
+
+  --opaque-button-border-intensity: 9; /* In terms of percentages */
+
+  /* Backgrounds applied on top of other backgrounds when hovered/active */
+  --elevate-1: rgba(255, 255, 255, 0.04);
+  --elevate-2: rgba(255, 255, 255, 0.09);
+
+  --background: 205 24% 18%;
+
+  --foreground: 42 36% 94%;
+
+  --border: 205 19% 30%;
+
+  --card: 205 21% 22%;
+
+  --card-foreground: 42 36% 94%;
+
+  --card-border: 205 19% 30%;
+
+  --sidebar: 205 26% 14%;
+
+  --sidebar-foreground: 42 36% 94%;
+
+  --sidebar-border: 205 19% 25%;
+
+  --sidebar-primary: 160 28% 67%;
+
+  --sidebar-primary-foreground: 205 24% 18%;
+
+  --sidebar-accent: 205 19% 27%;
+
+  --sidebar-accent-foreground: 42 36% 94%;
+
+  --sidebar-ring: 160 28% 67%;
+
+  --popover: 205 21% 22%;
+
+  --popover-foreground: 42 36% 94%;
+
+  --popover-border: 205 19% 30%;
+
+  --primary: 160 28% 67%;
+
+  --primary-foreground: 205 24% 18%;
+
+  --secondary: 205 19% 30%;
+
+  --secondary-foreground: 42 36% 94%;
+
+  --muted: 205 19% 26%;
+
+  --muted-foreground: 42 14% 72%;
+
+  --accent: 37 48% 67%;
+
+  --accent-foreground: 205 24% 18%;
+
+  --destructive: 4 58% 58%;
+
+  --destructive-foreground: 205 24% 18%;
+
+  /* Used as the border around inputs. Dark mode: Should be a border that is light enough to have high contrast when rendered on a --card background. More contrast than standard --border */
+  --input: 205 19% 30%;
+  --ring: 160 28% 67%;
+  --chart-1: 160 28% 67%;
+  --chart-2: 37 48% 67%;
+  --chart-3: 42 36% 94%;
+  --chart-4: 162 24% 39%;
+  --chart-5: 4 58% 58%;
+
+  --shadow-2xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-sm:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-md:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 2px 4px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-lg:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 4px 6px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-xl:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 8px 10px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-2xl: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+/**
+ * Using the elevate system.
+ * Automatic contrast adjustment.
+ *
+ * <element className="hover-elevate" />
+ * <element className="active-elevate-2" />
+ *
+ * // Using the tailwind utility when a data attribute is "on"
+ * <element className="toggle-elevate data-[state=on]:toggle-elevated" />
+ * // Or manually controlling the toggle state
+ * <element className="toggle-elevate toggle-elevated" />
+ *
+ * Elevation systems have to handle many states.
+ * - not-hovered, vs. hovered vs. active  (three mutually exclusive states)
+ * - toggled or not
+ * - focused or not (this is not handled with these utilities)
+ *
+ * Even without handling focused or not, this is six possible combinations that
+ * need to be distinguished from eachother visually.
+ */
+@layer utilities {
+  /* Hide ugly search cancel button in Chrome until we can style it properly */
+  input[type='search']::-webkit-search-cancel-button {
+    @apply hidden;
+  }
+
+  /* Placeholder styling for contentEditable div */
+  [contenteditable][data-placeholder]:empty::before {
+    content: attr(data-placeholder);
+    color: hsl(var(--muted-foreground));
+    pointer-events: none;
+  }
+
+  /* .no-default-hover-elevate/no-default-active-elevate is an escape hatch so consumers of
+   * buttons/badges can remove the automatic brightness adjustment on interactions
+   * and program their own. */
+  .no-default-hover-elevate {
+  }
+
+  .no-default-active-elevate {
+  }
+
+  /**
+   * Toggleable backgrounds go behind the content. Hoverable/active goes on top.
+   * This way they can stack/compound. Both will overlap the parent's borders!
+   * So borders will be automatically adjusted both on toggle, and hover/active,
+   * and they will be compounded.
+   */
+  .toggle-elevate::before,
+  .toggle-elevate-2::before {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    inset: 0px;
+    /*border-radius: inherit;   match rounded corners */
+    border-radius: inherit;
+    z-index: -1;
+    /* sits behind content but above backdrop */
+  }
+
+  .toggle-elevate.toggle-elevated::before {
+    background-color: var(--elevate-2);
+  }
+
+  /* If there's a 1px border, adjust the inset so that it covers that parent's border */
+  .border.toggle-elevate::before {
+    inset: -1px;
+  }
+
+  /* Does not work on elements with overflow:hidden! */
+  .hover-elevate:not(.no-default-hover-elevate),
+  .active-elevate:not(.no-default-active-elevate),
+  .hover-elevate-2:not(.no-default-hover-elevate),
+  .active-elevate-2:not(.no-default-active-elevate) {
+    position: relative;
+    z-index: 0;
+  }
+
+  .hover-elevate:not(.no-default-hover-elevate)::after,
+  .active-elevate:not(.no-default-active-elevate)::after,
+  .hover-elevate-2:not(.no-default-hover-elevate)::after,
+  .active-elevate-2:not(.no-default-active-elevate)::after {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    inset: 0px;
+    /*border-radius: inherit;   match rounded corners */
+    border-radius: inherit;
+    z-index: 999;
+    /* sits in front of content */
+  }
+
+  .hover-elevate:hover:not(.no-default-hover-elevate)::after,
+  .active-elevate:active:not(.no-default-active-elevate)::after {
+    background-color: var(--elevate-1);
+  }
+
+  .hover-elevate-2:hover:not(.no-default-hover-elevate)::after,
+  .active-elevate-2:active:not(.no-default-active-elevate)::after {
+    background-color: var(--elevate-2);
+  }
+
+  /* If there's a 1px border, adjust the inset so that it covers that parent's border */
+  .border.hover-elevate:not(.no-hover-interaction-elevate)::after,
+  .border.active-elevate:not(.no-active-interaction-elevate)::after,
+  .border.hover-elevate-2:not(.no-hover-interaction-elevate)::after,
+  .border.active-elevate-2:not(.no-active-interaction-elevate)::after,
+  .border.hover-elevate:not(.no-hover-interaction-elevate)::after {
+    inset: -1px;
+  }
+}
+
+/* GVM Portal shell */
+.portal-shell {
+  --portal-ink: hsl(205 24% 18%);
+  --portal-ink-soft: hsl(205 10% 44%);
+  --portal-paper: hsl(42 36% 94%);
+  --portal-paper-bright: hsl(42 45% 97%);
+  --portal-line: hsl(42 20% 83%);
+  --portal-teal: hsl(162 24% 39%);
+  --portal-mint: hsl(160 28% 67%);
+  --portal-amber: hsl(37 48% 67%);
+  background:
+    radial-gradient(circle at 82% 8%, hsl(160 28% 67% / 0.15), transparent 27rem),
+    radial-gradient(circle at 11% 75%, hsl(37 48% 67% / 0.1), transparent 24rem),
+    var(--portal-paper);
+  color: var(--portal-ink);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.portal-shell::before {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+  content: '';
+  inset: 0;
+  opacity: 0.035;
+  pointer-events: none;
+  position: absolute;
+}
+
+.portal-header {
+  align-items: center;
+  border-bottom: 1px solid var(--portal-line);
+  display: flex;
+  justify-content: space-between;
+  min-height: 76px;
+  padding: 0 clamp(1.25rem, 5vw, 5.5rem);
+  position: relative;
+  z-index: 1;
+}
+
+.portal-brand,
+.portal-header-meta,
+.portal-footer,
+.portal-footer-status,
+.portal-kicker,
+.portal-status-badge,
+.portal-retry-button {
+  align-items: center;
+  display: flex;
+}
+
+.portal-brand {
+  gap: 0.7rem;
+}
+
+.portal-brand-mark {
+  display: grid;
+  gap: 2px;
+  grid-template-columns: repeat(3, 5px);
+  height: 17px;
+  transform: skewY(-22deg);
+  width: 20px;
+}
+
+.portal-brand-mark span {
+  background: var(--portal-teal);
+  display: block;
+  height: 100%;
+}
+
+.portal-brand-mark span:nth-child(2) {
+  background: var(--portal-amber);
+  height: 76%;
+  margin-top: 24%;
+}
+
+.portal-brand-mark span:nth-child(3) {
+  background: var(--portal-mint);
+  height: 51%;
+  margin-top: 49%;
+}
+
+.portal-brand-name {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.portal-header-meta {
+  color: var(--portal-ink-soft);
+  font-family: var(--app-font-mono);
+  font-size: 0.625rem;
+  gap: 0.6rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.portal-meta-dot,
+.portal-footer-status-dot {
+  background: var(--portal-mint);
+  border-radius: 999px;
+  display: inline-block;
+  height: 6px;
+  width: 6px;
+}
+
+.portal-meta-divider {
+  background: var(--portal-line);
+  height: 13px;
+  width: 1px;
+}
+
+.portal-mono {
+  font-family: var(--app-font-mono);
+}
+
+.portal-main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 760px;
+  padding: clamp(4.5rem, 12vh, 8.5rem) 1.5rem clamp(4rem, 10vh, 7rem);
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+
+.portal-intro {
+  animation: portal-rise 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.portal-kicker {
+  color: var(--portal-teal);
+  font-family: var(--app-font-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  gap: 0.55rem;
+  letter-spacing: 0.14em;
+  margin-bottom: 1.45rem;
+  text-transform: uppercase;
+}
+
+.portal-intro h1 {
+  font-size: clamp(2.8rem, 7vw, 5rem);
+  font-weight: 500;
+  letter-spacing: -0.065em;
+  line-height: 0.98;
+  margin: 0;
+  max-width: 680px;
+}
+
+.portal-intro h1 em {
+  color: var(--portal-teal);
+  font-family: var(--app-font-serif);
+  font-weight: 400;
+  letter-spacing: -0.075em;
+}
+
+.portal-intro p {
+  color: var(--portal-ink-soft);
+  font-size: 0.96rem;
+  line-height: 1.65;
+  margin: 1.8rem 0 0;
+  max-width: 420px;
+}
+
+.portal-status-card {
+  animation: portal-rise 700ms 100ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  background: hsl(42 45% 97% / 0.74);
+  border: 1px solid var(--portal-line);
+  border-radius: 0.4rem;
+  box-shadow: 0 20px 50px hsl(205 24% 18% / 0.06);
+  margin-top: clamp(3rem, 7vw, 5.5rem);
+  padding: clamp(1.2rem, 4vw, 1.65rem);
+}
+
+.portal-card-heading {
+  align-items: flex-end;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.portal-card-eyebrow {
+  color: var(--portal-ink-soft);
+  font-family: var(--app-font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  margin: 0 0 0.45rem;
+  text-transform: uppercase;
+}
+
+.portal-card-heading h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  margin: 0;
+}
+
+.portal-status-badge {
+  border: 1px solid var(--portal-line);
+  border-radius: 999px;
+  color: var(--portal-ink-soft);
+  flex-shrink: 0;
+  font-family: var(--app-font-mono);
+  font-size: 0.59rem;
+  gap: 0.42rem;
+  letter-spacing: 0.05em;
+  padding: 0.42rem 0.62rem;
+  text-transform: uppercase;
+}
+
+.portal-status-badge-dot {
+  background: var(--portal-amber);
+  border-radius: 999px;
+  height: 6px;
+  width: 6px;
+}
+
+.portal-status-badge.is-connected {
+  background: hsl(160 28% 67% / 0.14);
+  border-color: hsl(160 28% 67% / 0.55);
+  color: var(--portal-teal);
+}
+
+.portal-status-badge.is-connected .portal-status-badge-dot {
+  background: var(--portal-teal);
+}
+
+.portal-status-badge.is-error .portal-status-badge-dot {
+  background: hsl(4 58% 47%);
+}
+
+.portal-card-rule {
+  background: var(--portal-line);
+  height: 1px;
+  margin: 1.3rem 0;
+  width: 100%;
+}
+
+.portal-status-row {
+  align-items: center;
+  display: flex;
+  gap: 0.85rem;
+}
+
+.portal-status-icon {
+  align-items: center;
+  background: hsl(162 24% 39% / 0.1);
+  border-radius: 0.3rem;
+  color: var(--portal-teal);
+  display: flex;
+  height: 36px;
+  justify-content: center;
+  width: 36px;
+}
+
+.portal-status-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.26rem;
+  min-width: 0;
+}
+
+.portal-status-label,
+.portal-status-value {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.portal-status-label {
+  color: var(--portal-ink-soft);
+  font-family: var(--app-font-mono);
+  font-size: 0.64rem;
+}
+
+.portal-status-value {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.portal-status-value.is-muted {
+  color: var(--portal-ink-soft);
+  font-weight: 500;
+}
+
+.portal-status-code {
+  color: var(--portal-ink-soft);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+}
+
+.portal-skeleton {
+  animation: portal-pulse 1.4s ease-in-out infinite;
+  background: hsl(42 20% 83% / 0.9);
+  border-radius: 0.2rem;
+  display: block;
+  height: 0.8rem;
+  width: 8.5rem;
+}
+
+.portal-retry-button {
+  background: transparent;
+  border: 1px solid var(--portal-line);
+  border-radius: 0.25rem;
+  color: var(--portal-teal);
+  cursor: pointer;
+  font-family: var(--app-font-mono);
+  font-size: 0.63rem;
+  gap: 0.45rem;
+  margin-top: 1.15rem;
+  padding: 0.55rem 0.7rem;
+  transition: background-color 180ms ease, border-color 180ms ease;
+}
+
+.portal-retry-button:hover {
+  background: hsl(160 28% 67% / 0.14);
+  border-color: hsl(160 28% 67% / 0.6);
+}
+
+.portal-retry-button:focus-visible {
+  outline: 2px solid var(--portal-teal);
+  outline-offset: 3px;
+}
+
+.portal-footer-note {
+  align-items: center;
+  animation: portal-rise 700ms 180ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  color: var(--portal-ink-soft);
+  display: flex;
+  font-family: var(--app-font-mono);
+  font-size: 0.6rem;
+  gap: 0.7rem;
+  letter-spacing: 0.07em;
+  margin-top: 1.35rem;
+  text-transform: uppercase;
+}
+
+.portal-footer-line {
+  background: var(--portal-amber);
+  height: 1px;
+  width: 26px;
+}
+
+.portal-footer {
+  border-top: 1px solid var(--portal-line);
+  color: var(--portal-ink-soft);
+  font-family: var(--app-font-mono);
+  font-size: 0.58rem;
+  justify-content: space-between;
+  letter-spacing: 0.08em;
+  min-height: 58px;
+  padding: 0 clamp(1.25rem, 5vw, 5.5rem);
+  position: relative;
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+.portal-footer-status {
+  gap: 0.5rem;
+}
+
+@keyframes portal-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes portal-pulse {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 560px) {
+  .portal-header {
+    min-height: 68px;
+  }
+
+  .portal-header-meta {
+    font-size: 0.55rem;
+  }
+
+  .portal-header-meta span:nth-child(2),
+  .portal-meta-divider {
+    display: none;
+  }
+
+  .portal-main {
+    padding-top: 4.4rem;
+  }
+
+  .portal-card-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .portal-status-badge {
+    font-size: 0.55rem;
+  }
+}

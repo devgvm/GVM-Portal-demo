@@ -1,0 +1,2 @@
+- [Artifact relocation](artifact-relocation.md) — moving a registered artifact temporarily removes it; validate its manifest at the new path to restore registration.
+- [Expo DevTools libraries](expo-devtools-libraries.md) — inspect the cached DotSlash binary, not its launcher, to diagnose missing desktop libraries.

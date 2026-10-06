@@ -1,0 +1,101 @@
+gvm-protal/
+├── artifacts/
+│   ├── backend/                         # NestJS + TypeScript
+│   │   ├── artifact.toml                # Replit artifact registration
+│   │   ├── package.json
+│   │   ├── tsconfig.json
+│   │   ├── .env.example
+│   │   ├── src/
+│   │   │   ├── main.ts
+│   │   │   ├── app.module.ts
+│   │   │   ├── config/
+│   │   │   ├── shared/                  # Backend-only guards, pipes, filters
+│   │   │   └── modules/
+│   │   │       ├── auth/
+│   │   │       ├── profiles/
+│   │   │       ├── incidents/
+│   │   │       ├── tasks/
+│   │   │       ├── clients/
+│   │   │       │   ├── onboarding/
+│   │   │       │   └── offboarding/
+│   │   │       └── partners/
+│   │   │           ├── onboarding/
+│   │   │           └── offboarding/
+│   │   └── test/
+│   │
+│   ├── web/                             # React + Vite
+│   │   ├── artifact.toml
+│   │   ├── package.json
+│   │   ├── tsconfig.json
+│   │   ├── vite.config.ts
+│   │   ├── index.html
+│   │   ├── .env.example
+│   │   └── src/
+│   │       ├── main.tsx
+│   │       ├── app/                     # Router, providers, layouts
+│   │       ├── features/
+│   │       │   ├── auth/
+│   │       │   ├── profiles/
+│   │       │   ├── incidents/
+│   │       │   ├── tasks/
+│   │       │   ├── clients/
+│   │       │   └── partners/
+│   │       ├── components/              # Reusable web UI
+│   │       └── lib/                     # API client setup
+│   │
+│   └── mobile/                          # React Native + Expo
+│       ├── artifact.toml
+│       ├── package.json
+│       ├── tsconfig.json
+│       ├── app.json                     # Expo name, icons, scheme, splash
+│       ├── .env.example
+│       ├── app/                          # Expo Router screens
+│       ├── assets/
+│       └── src/
+│           ├── features/
+│           │   ├── auth/
+│           │   ├── profiles/
+│           │   ├── incidents/
+│           │   ├── tasks/
+│           │   ├── clients/
+│           │   └── partners/
+│           ├── components/              # Reusable native UI
+│           └── lib/                     # API client setup
+│
+├── common/                              # Safe to import on web and mobile
+│   ├── package.json
+│   ├── tsconfig.json
+│   └── src/
+│       ├── constants/
+│       ├── types/
+│       └── validation/
+│
+├── packages/
+│   ├── api-spec/
+│   │   ├── package.json
+│   │   └── openapi.yaml                 # HTTP contract
+│   ├── api-client-react/
+│   │   ├── package.json
+│   │   └── src/                         # Generated hooks/client
+│   └── db/                              # Backend-only package
+│       ├── package.json
+│       ├── tsconfig.json
+│       ├── drizzle.config.ts
+│       ├── src/schema/
+│       └── migrations/
+│
+├── docs/
+│   ├── architecture.md
+│   ├── modules.md                       # How to add a feature
+│   ├── api.md
+│   ├── database.md
+│   └── auth-and-permissions.md
+├── package.json                         # Root scripts; private package
+├── pnpm-workspace.yaml                  # artifacts/*, common, packages/*
+├── pnpm-lock.yaml                       # Commit this
+├── tsconfig.base.json                   # Shared TypeScript settings
+├── tsconfig.json                        # Workspace project references
+├── eslint.config.js
+├── .gitignore
+├── README.md                            # Setup and workflow instructions
+└── .replit                             # Replit workflow configuration
